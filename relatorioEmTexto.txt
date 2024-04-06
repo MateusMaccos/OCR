@@ -1,114 +1,23 @@
-Este relatório é apenas um dos vários elementos a serem considerados durante a avaliação da eficácia da terapia e não visa substituir dados de diagnóstico.
+Relatório detalhado
 
+Silva e Silva, Camila
 
-Impresso por:
+Data de nasc: 08/05/1991
+Referência:
 
-
-Care Orchestrator
-
-
-18/05/2022
-
-
-camila.leite
-
-
-Página 1 de 21
-
-
-
-PAP MM 26emH2o
-18 cmH2O0
-
-PP M . 18cmH2oO
-
-7 cmH20
-
-Pressão EPAP
-
-cronometrada 1,5
-
-Volame corrente S 450
-
-Inspi
-
-Ererfinição do tempo de elevação o
-Bloqueio q_a__g_ç_f_ipiçâo do tempo de efevação SSS e Ativado
-Desativado
-
-Tipo de tubo
-
-Travadotipodetubo —À AAO29074
-Alamededesconexão — cccc  Desativado
-Desatlvado
-
-Alarme de apneia
-
-Alarme de ventilação por minuto baixa
-
-— SYstem one
-3
-
-Configuração do umidificador
-
-
-Configurações do dispositivo
-
-Parâmetro
-
-Valor
-
-
-Definições do Dispositivo a partir de
-
-10/05/2022
-
-Modo do aparelho
-
-S/T- AVAPS
-
-
-04/05/2022 - 10/05/2022
-
-
-Informações de aderência à terapêutica
-
-Rua Coronel Nunes de Melo, 1142, Fortaleza - CE,
-60416-000, BRA
-
-
-Camila Ferreira Leite
-
-
-Equipa de cuidados médicos
-
-Leite, Camila
-
-
-BIPAP AVAPS 30 (System One 60 Series) 3.05.01 (1169P) C20346083C819
-
-
-Telefone
-Dispositivos:
-
-
-CamilaSilva e Sil.
-
-
-1D do paciente:
+ID do paciente: CamilaSilva e Si
 Telefone:
 
+Telefone:
+
+Dispositivos: BIPAP AVAPS 31
+
+
+Intervalo de datas: = 04/05/2022 - 10/05/2022
+Data de configuração: 11/05/2022
 
 Máscara:
 App vinculado:
-
-
-Organização:
-Morada:
-
-
-Intervalo de datas: — 04/05/2022 - 10/05/2022
-Data de configuração: 11/05/2022
 
 
 Camila Ferreira Leite, Am...
@@ -119,16 +28,82 @@ Rodolfo Teófilo
 Fortaleza, CE 60416-000
 
 
-Data de nasc:
-Referência:
+Organização:
+Morada:
 
 
-Intervalo de datas:
-
-Silva e Silva, Camila
-
-Data de nasc: 08/05/1991
+CamilaSilva e sil.
 
 
-Relatório detalhado
+AP AVAPS 30) (System One 60 Series) 3.05.01 (1169P) C20346083C819
+
+
+Equipa de cuidados médicos
+
+Leite, Camila Camila Ferreira Leite Rua Coronel Nunes de Melo, 1142, Fortaleza - CE,
+60416-000, BRA
+
+
+
+Informações de aderência à terapêutica
+
+04/05/2022 - 10/05/2022
+
+
+Definições do Dispositivo a partir de
+
+10/05/2022
+
+Modo do aparelho S/T- AVAPS
+
+
+Configurações do dispositivo
+
+Parâmetro
+IPAP máx.
+
+Valor
+26 cmH20
+
+correr ereerreereerseeereseererreeererssererseeerereseeeereseeeereseeesmmeeeeseeeemeee 2 2mH2O.
+
+7 emH20
+
+Trava do tipo de tubo sí es €es nxtésttãA o 2:  " 5” 2. i 5 o.,.):-Y-]'H<—<«""7)"2""M%Õ2"" 2 05,
+
+Alarme de desconexão
+
+Alarme de apneia
+
+Alarme de ventilação por minuto baixa
+
+Mudar ajustes do umi
+
+Modo de umidificação
+
+icador
+
+sismo
+
+Configuração do umidificador
+
+
+
+18/05/2022
+
+
+Página 1 de 21
+
+
+Care Orchestrator
+
+
+camila.leite
+
+
+Impresso por:
+
+
+Este relatório é apenas um dos vários elementos a serem considerados durante a avaliação da eficácia da terapia e não visa substituir dados de diagnóstico.
+
 

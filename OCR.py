@@ -3,7 +3,7 @@ import cv2
 import pytesseract
 
 # Mention the installed location of Tesseract-OCR in your system
-pytesseract.pytesseract.tesseract_cmd = r'C:\Users\ALUNOS\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # from pdf2image import convert_from_path
  
@@ -19,8 +19,20 @@ img = cv2.imread("relatorio.jpg")
 # Convert the image to gray scale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
+# Aplicando suavização com filtro Gaussiano
+gray = cv2.GaussianBlur(gray, (5, 5), 0)
+
+# Salva a nova imagem com os contornos
+cv2.imwrite("imagem_gray.jpg", gray)
+
+# Aplicando a limiarização adaptativa
+thresh1 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 11, 2)
+
 # Performing OTSU threshold
-ret, thresh1 = cv2.threshold(gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+# ret, thresh1 = cv2.threshold(gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+
+# Salva a nova imagem com os contornos
+cv2.imwrite("thresh1.jpg", thresh1)
 
 # Specify structure shape and kernel size. 
 # Kernel size increases or decreases the area 
@@ -30,7 +42,9 @@ ret, thresh1 = cv2.threshold(gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_I
 rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (18, 18))
 
 # Applying dilation on the threshold image
-dilation = cv2.dilate(thresh1, rect_kernel, iterations = 1)
+dilation = cv2.dilate(thresh1, rect_kernel, iterations=1)
+# dilation = cv2.dilate(thresh1, rect_kernel, iterations = 1)
+cv2.imwrite("dilation.jpg", dilation)
 
 # Finding contours
 contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL, 
@@ -43,6 +57,19 @@ im2 = img.copy()
 file = open("relatorioEmTexto.txt", "w+")
 file.write("")
 file.close()
+
+import numpy as np
+
+# Cria uma cópia da imagem original para desenhar os contornos
+im_with_contours = img.copy()
+
+# Desenha os contornos na imagem copiada
+cv2.drawContours(im_with_contours, contours, -1, (0, 255, 0), 3)
+
+# Salva a nova imagem com os contornos
+cv2.imwrite("imagem_com_contornos.jpg", im_with_contours)
+
+contours = sorted(contours, key=lambda x: cv2.boundingRect(x)[1])
 
 # Looping through the identified contours
 # Then rectangular part is cropped and passed on
