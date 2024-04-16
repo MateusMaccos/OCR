@@ -5,28 +5,96 @@ from pytesseract import Output
 img = cv2.imread("relatorio.jpg")
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# 0    Orientation and script detection (OSD) only.
+# 1    Automatic page segmentation with OSD.
+# 2    Automatic page segmentation, but no OSD, or OCR.
+# 3    Fully automatic page segmentation, but no OSD. (Default)
+# 4    Assume a single column of text of variable sizes.
+# 5    Assume a single uniform block of vertically aligned text.
+# 6    Assume a single uniform block of text.
+# 7    Treat the image as a single text line.
+# 8    Treat the image as a single word.
+# 9    Treat the image as a single word in a circle.
+# 10    Treat the image as a single character.
+# 11    Sparse text. Find as much text as possible in no particular order.
+# 12    Sparse text with OSD.
+# 13    Raw line. Treat the image as a single text line, bypassing hacks that are Tesseract-specific.
 
-# Aplicando suavização com filtro Gaussiano
-gray = cv2.GaussianBlur(gray, (5, 5), 0)
+myconfig = r"--psm 11 --oem 3"
 
-# Aplicando a limiarização adaptativa
-thresh1 = cv2.adaptiveThreshold(
-    gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 5, 5
-)
+invertedImg = cv2.bitwise_not(img)
+cv2.imwrite("imagem_invertida.jpg", invertedImg)
 
-rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (10, 10))
 
-# Applying dilation on the threshold image
-dilation = cv2.dilate(thresh1, rect_kernel, iterations=1)
+def grayscale(image):
+    return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-d = pytesseract.image_to_data(img, output_type=Output.DICT, lang="por")
+
+grayImg = grayscale(img)
+cv2.imwrite("grayImagem.jpg", grayImg)
+
+thresh, im_bw = cv2.threshold(grayImg, 220, 255, cv2.THRESH_BINARY)
+cv2.imwrite("bw_img.jpg", im_bw)
+
+
+def noise_removal(image):
+    import numpy as np
+
+    kernel = np.ones((1, 1), np.uint8)
+    image = cv2.dilate(image, kernel, iterations=1)
+    kernel = np.ones((1, 1), np.uint8)
+    image = cv2.erode(image, kernel, iterations=1)
+    image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
+    # image = cv2.medianBlur(image, 3)
+    return image
+
+
+no_noise = noise_removal(im_bw)
+cv2.imwrite("no_noise.jpg", no_noise)
+
+
+def thin_font(image):
+    import numpy as np
+
+    image = cv2.bitwise_not(image)
+    kernel = np.ones((1, 1), np.uint8)
+    image = cv2.erode(image, kernel, iterations=1)
+    image = cv2.bitwise_not(image)
+    return image
+
+
+def thick_font(image):
+    import numpy as np
+
+    image = cv2.bitwise_not(image)
+    kernel = np.ones((1, 1), np.uint8)
+    image = cv2.dilate(image, kernel, iterations=1)
+    image = cv2.bitwise_not(image)
+    return image
+
+
+eroded_image = thin_font(no_noise)
+cv2.imwrite("eroded.jpg", eroded_image)
+
+dilated_image = thick_font(no_noise)
+cv2.imwrite("dilated.jpg", dilated_image)
+
+d = pytesseract.image_to_data(img, output_type=Output.DICT, lang="por", config=myconfig)
 
 n_boxes = len(d["text"])
 for i in range(n_boxes):
-    if int(d["conf"][i]) > 60:
+    if int(d["conf"][i]) > 50:
         (x, y, w, h) = (d["left"][i], d["top"][i], d["width"][i], d["height"][i])
         img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        # cv2.putText(
+        #     img,
+        #     d["text"][i],
+        #     (x, y + h + 20),
+        #     cv2.FONT_HERSHEY_SIMPLEX,
+        #     0.7,
+        #     (0, 255, 0),
+        #     2,
+        #     cv2.LINE_AA,
+        # )
 
-cv2.imshow("img", img)
-cv2.waitKey(0)
+cv2.imwrite("imagem_com_deteccao.jpg", img)
