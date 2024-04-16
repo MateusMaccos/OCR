@@ -1,118 +1,243 @@
-Relatório detalhado
-
-Silva e Silva, Camila
-
-Data de nasc: 08/05/1991
-Referência:
-
-1D do paciente: CamilaSilva e Si
-Telefone:
-
-Telefone:
-
-Dispositivos: BIPAP AVAPS 3
-
-
-Intervalo de datas: — 04/05/2022 - 10/05/2022
-Data de configuração: 11/05/2022
-
-Máscara:
-App vinculado:
-
-
-Camila Ferreira Leite, Am...
-
-Rua Coronel Nunes de Melo, 1142 ,
-Rodolfo Teófilo
-
-Fortaleza, CE 60416-000
-
-
+Silva
+e
+Silva,
+Camila
+Relatório
+detalhado
+Data
+de
+nasc:
+08/05/1991
 Organização:
-Morada:
-
-
-CamilaSilva e S* .
-
-
-BIPAP AVAPS 34 (System One 60 Series) 3.05.01 (1169P) C20346083C819
-
-
-
-Equipa de cuidados médicos
-
-Leite, Camila Camila Ferreira Leite Rua Coronel Nunes de Melo, 1142, Fortaleza - CE,
-60416-000, BRA
-
-
-
-Informações de aderência à terapêutica
-
-04/05/2022 - 10/05/2022
-
-
-Definições do Dispositivo a partir de
-
+Camila
+Ferreira
+Leite,
+Am...
+Intervalo
+de
+datas:
+—
+04/05/2022
+-
 10/05/2022
-
-Modo do aparelho
-
-S/T- AVAPS
-
-
-Configurações do dispositivo
-
-
-Parâmetro Valor
-PAP MM 26emH2o
-IPAP mín. 18 cmH20
-
-Inspiração ee me me 15
+Referência:
+Morada:
+Rua
+Coronel
+Nunes
+de
+Melo,
+1142,
+—
+Data
+de
+configuração:
+11/05/2022
+;
+e
+,
+Rodoifo
+Teófilo
+Á
+1D
+do
+paciente:
+CamilaSilva
+e
+Sil...
+Fortaleza,
+CÉ
+60416-000
+Máscara:
+Telefone:
+App
+vinculado:
+Telefone:
+Dispositivos:
+BIPAP
+AVAPS
+30
+(System
+One
+60
+Series)
+3.05.01
+(1169P)
+C20346083C819
+Equipa
+de
+cuidados
+médicos
+Leite,
+Camila
+Camila
+Ferreira
+Leite
+Rua
+Coronel
+Nunes
+de
+Melo,
+1142,
+Fortaleza
+-
+CE,
+60416-000,
+BRA
+Informações
+de
+aderência
+à
+terapêutica
+04/05/2022
+-
+10/05/2022
+ 
+Definições
+do
+Dispositivo
+a
+partir
+de
+10/05/2022
+Modo
+do
+aparelho
+S/T
+-
+AVAPS
+Configurações
+do
+dispositivo
+Parâmetro
+Valor
+IPAP
+máx.
+26
+cmH2O0
+IPAP
+min.
+18
+cmH2O0
+Pressão
+EPAP
+7
+cmH20
+Taxa
+respiratória
+12
+Inspiração
+cronometrada
+15
+Volume
+corrente
 450
-
-Volume corrente
-
-Ererfinição do tempo de elevação o
-Bloqueio da definição do tempo de elevação Ativado
-
-Trava da resistência da máscara Ativado
-
-Tipo de tubo
+Definição
+do
+tempo
+de
+elevação
+2
+Bloqueio
+da
+definição
+do
+tempo
+de
+elevação
+—
+Afivado
+Rampa
+D
+Resistência
+da
+máscara
+1
+ 
+ 
+ 
+Tipo
+de
+tubo
+22-
+Trava
+do
+tipo
+de
+tubo
 Desativado
-
-Trava do tipo de tubo
+ 
+Alarme
+de
+desconexão
 Desativado
-
-S A
-
+ 
+ 
+ 
+ 
+Alarme
+de
+ventilação
+por
+minuto
+baixa
+1
+Alarme
+de
+volume
+corrente
+baixo
 Desativado
-
-Mudar ajustes do umidificador
-
-
-SSlem One
-
-EE ENAAm SSS 3
-
-Configuração do umidificador
-
-
-
-Página 1 de 21
-
-
-Care Orchestrator
-
-
-18/05/2022
-
-
+Mudar
+ajustes
+do
+umidificador
+Sim
+Modo
+de
+umidificação
+System
+One
+Configuração
+do
+umidificador
+3
+PHILIPS
+Impresso
+por:
 camila.leite
-
-
-Impresso por:
-
-
-Este relatório é apenas um dos vários elementos a serem considerados durante a avaliação da eficácia da terapia e não visa substituir dados de diagnóstico.
-
-
+18/05/2022
+Care
+Orchestrator
+Página
+1
+de
+21
+*
+2
+G,
+Este
+relatório
+é
+apenas
+um
+dos
+vánros
+elementos
+a
+serem
+considerados
+durante
+a
+avaliação
+da
+eficácia
+da
+terapia
+e
+não
+visa
+substituir
+dados
+de
+diagnóstico.

@@ -20,7 +20,7 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tessera
 # 12    Sparse text with OSD.
 # 13    Raw line. Treat the image as a single text line, bypassing hacks that are Tesseract-specific.
 
-myconfig = r"--psm 11 --oem 3"
+myconfig = r"--psm 3 --oem 3"
 
 invertedImg = cv2.bitwise_not(img)
 cv2.imwrite("imagem_invertida.jpg", invertedImg)
@@ -40,12 +40,12 @@ cv2.imwrite("bw_img.jpg", im_bw)
 def noise_removal(image):
     import numpy as np
 
-    kernel = np.ones((1, 1), np.uint8)
+    kernel = np.ones((2, 2), np.uint8)
     image = cv2.dilate(image, kernel, iterations=1)
-    kernel = np.ones((1, 1), np.uint8)
+    kernel = np.ones((2, 2), np.uint8)
     image = cv2.erode(image, kernel, iterations=1)
     image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
-    # image = cv2.medianBlur(image, 3)
+    # image = cv2.medianBlur(image, 1)
     return image
 
 
@@ -57,7 +57,7 @@ def thin_font(image):
     import numpy as np
 
     image = cv2.bitwise_not(image)
-    kernel = np.ones((1, 1), np.uint8)
+    kernel = np.ones((2, 2), np.uint8)
     image = cv2.erode(image, kernel, iterations=1)
     image = cv2.bitwise_not(image)
     return image
@@ -67,7 +67,7 @@ def thick_font(image):
     import numpy as np
 
     image = cv2.bitwise_not(image)
-    kernel = np.ones((1, 1), np.uint8)
+    kernel = np.ones((2, 2), np.uint8)
     image = cv2.dilate(image, kernel, iterations=1)
     image = cv2.bitwise_not(image)
     return image
@@ -76,16 +76,22 @@ def thick_font(image):
 eroded_image = thin_font(no_noise)
 cv2.imwrite("eroded.jpg", eroded_image)
 
-dilated_image = thick_font(no_noise)
+dilated_image = thick_font(eroded_image)
 cv2.imwrite("dilated.jpg", dilated_image)
 
+img = dilated_image
 d = pytesseract.image_to_data(img, output_type=Output.DICT, lang="por", config=myconfig)
+
+# A text file is created and flushed
+file = open("relatorioEmTexto.txt", "w+")
+file.write("")
+file.close()
 
 n_boxes = len(d["text"])
 for i in range(n_boxes):
-    if int(d["conf"][i]) > 50:
+    if int(d["conf"][i]) > 20:
         (x, y, w, h) = (d["left"][i], d["top"][i], d["width"][i], d["height"][i])
-        img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
         # cv2.putText(
         #     img,
         #     d["text"][i],
@@ -96,5 +102,10 @@ for i in range(n_boxes):
         #     2,
         #     cv2.LINE_AA,
         # )
+
+        file = open("relatorioEmTexto.txt", "a")
+        file.write(d["text"][i])
+        file.write("\n")
+        file.close
 
 cv2.imwrite("imagem_com_deteccao.jpg", img)
