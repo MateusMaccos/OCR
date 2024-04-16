@@ -5,15 +5,15 @@ Silva e Silva, Camila
 Data de nasc: 08/05/1991
 Referência:
 
-ID do paciente: CamilaSilva e Si
+1D do paciente: CamilaSilva e Si
 Telefone:
 
 Telefone:
 
-Dispositivos: BIPAP AVAPS 31
+Dispositivos: BIPAP AVAPS 3
 
 
-Intervalo de datas: = 04/05/2022 - 10/05/2022
+Intervalo de datas: — 04/05/2022 - 10/05/2022
 Data de configuração: 11/05/2022
 
 Máscara:
@@ -32,10 +32,11 @@ Organização:
 Morada:
 
 
-CamilaSilva e sil.
+CamilaSilva e S* .
 
 
-AP AVAPS 30) (System One 60 Series) 3.05.01 (1169P) C20346083C819
+BIPAP AVAPS 34 (System One 60 Series) 3.05.01 (1169P) C20346083C819
+
 
 
 Equipa de cuidados médicos
@@ -54,48 +55,56 @@ Definições do Dispositivo a partir de
 
 10/05/2022
 
-Modo do aparelho S/T- AVAPS
+Modo do aparelho
+
+S/T- AVAPS
 
 
 Configurações do dispositivo
 
-Parâmetro
-IPAP máx.
 
-Valor
-26 cmH20
+Parâmetro Valor
+PAP MM 26emH2o
+IPAP mín. 18 cmH20
 
-correr ereerreereerseeereseererreeererssererseeerereseeeereseeeereseeesmmeeeeseeeemeee 2 2mH2O.
+Inspiração ee me me 15
+450
 
-7 emH20
+Volume corrente
 
-Trava do tipo de tubo sí es €es nxtésttãA o 2:  " 5” 2. i 5 o.,.):-Y-]'H<—<«""7)"2""M%Õ2"" 2 05,
+Ererfinição do tempo de elevação o
+Bloqueio da definição do tempo de elevação Ativado
 
-Alarme de desconexão
+Trava da resistência da máscara Ativado
 
-Alarme de apneia
+Tipo de tubo
+Desativado
 
-Alarme de ventilação por minuto baixa
+Trava do tipo de tubo
+Desativado
 
-Mudar ajustes do umi
+S A
 
-Modo de umidificação
+Desativado
 
-icador
+Mudar ajustes do umidificador
 
-sismo
+
+SSlem One
+
+EE ENAAm SSS 3
 
 Configuração do umidificador
 
-
-
-18/05/2022
 
 
 Página 1 de 21
 
 
 Care Orchestrator
+
+
+18/05/2022
 
 
 camila.leite
