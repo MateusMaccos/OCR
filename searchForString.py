@@ -171,18 +171,18 @@ desconexão
 Desativado
 """
 
-entrada = "configuração:"
+entrada = "ipap min."
 
 padrao = r""
 # Escapando espaços na entrada para a expressão regular
-for parte in entrada.split():
+for parte in entrada.lower().split():
     padrao += parte + r"\s*"
 
 # Expressão regular para encontrar o valor da entrada variável
 padrao += r"(.+)"
 
 # Busca pelo valor da entrada no texto usando a expressão regular
-match = re.search(padrao, texto)
+match = re.search(padrao, texto.lower())
 
 # Verifica se houve um match e extrai o valor encontrado
 if match:
