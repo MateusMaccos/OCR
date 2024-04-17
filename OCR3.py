@@ -2,8 +2,15 @@ import cv2
 import pytesseract
 from pytesseract import Output
 
-img = cv2.imread("relatorio.jpg")
+img = cv2.imread("relatorio2/relatorio2.jpg")
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+# from pdf2image import convert_from_path
+
+# images = convert_from_path(
+#     "bipap2.pdf", poppler_path=r"C:\Users\mateu\Downloads\poppler-24.02.0\Library\bin"
+# )
+# images[0].save("relatorio2.jpg", "JPEG")
 
 # 0    Orientation and script detection (OSD) only.
 # 1    Automatic page segmentation with OSD.
@@ -23,7 +30,7 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tessera
 myconfig = r"--psm 3 --oem 3"
 
 invertedImg = cv2.bitwise_not(img)
-cv2.imwrite("imagem_invertida.jpg", invertedImg)
+cv2.imwrite("relatorio2/imagem_invertida.jpg", invertedImg)
 
 
 def grayscale(image):
@@ -31,10 +38,10 @@ def grayscale(image):
 
 
 grayImg = grayscale(img)
-cv2.imwrite("grayImagem.jpg", grayImg)
+cv2.imwrite("relatorio2/grayImagem.jpg", grayImg)
 
 thresh, im_bw = cv2.threshold(grayImg, 220, 255, cv2.THRESH_BINARY)
-cv2.imwrite("bw_img.jpg", im_bw)
+cv2.imwrite("relatorio2/bw_img.jpg", im_bw)
 
 
 def noise_removal(image):
@@ -50,7 +57,7 @@ def noise_removal(image):
 
 
 no_noise = noise_removal(im_bw)
-cv2.imwrite("no_noise.jpg", no_noise)
+cv2.imwrite("relatorio2/no_noise.jpg", no_noise)
 
 
 def thin_font(image):
@@ -74,16 +81,16 @@ def thick_font(image):
 
 
 eroded_image = thin_font(no_noise)
-cv2.imwrite("eroded.jpg", eroded_image)
+cv2.imwrite("relatorio2/eroded.jpg", eroded_image)
 
 dilated_image = thick_font(eroded_image)
-cv2.imwrite("dilated.jpg", dilated_image)
+cv2.imwrite("relatorio2/dilated.jpg", dilated_image)
 
 img = dilated_image
 d = pytesseract.image_to_data(img, output_type=Output.DICT, lang="por", config=myconfig)
 
 # A text file is created and flushed
-file = open("relatorioEmTexto.txt", "w+")
+file = open("relatorio2/relatorioEmTexto.txt", "w+")
 file.write("")
 file.close()
 
@@ -92,20 +99,9 @@ for i in range(n_boxes):
     if int(d["conf"][i]) > 20:
         (x, y, w, h) = (d["left"][i], d["top"][i], d["width"][i], d["height"][i])
         img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
-        # cv2.putText(
-        #     img,
-        #     d["text"][i],
-        #     (x, y + h + 20),
-        #     cv2.FONT_HERSHEY_SIMPLEX,
-        #     0.7,
-        #     (0, 255, 0),
-        #     2,
-        #     cv2.LINE_AA,
-        # )
-
-        file = open("relatorioEmTexto.txt", "a")
+        file = open("relatorio2/relatorioEmTexto.txt", "a")
         file.write(d["text"][i])
         file.write("\n")
         file.close
 
-cv2.imwrite("imagem_com_deteccao.jpg", img)
+cv2.imwrite("relatorio2/imagem_com_deteccao.jpg", img)

@@ -8,7 +8,7 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tessera
 # from pdf2image import convert_from_path
 
 
-# images = convert_from_path('bipap.pdf',poppler_path=r'C:\Users\ALUNOS\Downloads\poppler-24.02.0\Library\bin')
+# images = convert_from_path('bipap.pdf',poppler_path=r'C:\Users\mateu\Downloads\poppler-24.02.0\Library\bin')
 # images[0].save('relatorio.jpg', 'JPEG')
 
 # Read image from which text needs to be extracted
