@@ -4,7 +4,7 @@ from pytesseract import Output
 import os
 import ajustarRotacao
 
-img = cv2.imread("teste1.jpg")
+img = cv2.imread("relatorio.jpg")
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # from pdf2image import convert_from_path
@@ -32,7 +32,7 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tessera
 myconfig = r"--psm 3 --oem 3"
 nomepasta = "teste1"
 invertedImg = cv2.bitwise_not(img)
-os.makedirs(f"./{nomepasta}")
+# os.makedirs(f"./{nomepasta}")
 cv2.imwrite(f"{nomepasta}/imagem_invertida.jpg", invertedImg)
 
 
@@ -90,21 +90,22 @@ dilated_image = thick_font(eroded_image)
 cv2.imwrite(f"{nomepasta}/dilated.jpg", dilated_image)
 
 img = dilated_image
-d = pytesseract.image_to_data(img, output_type=Output.DICT, lang="por", config=myconfig)
+texto = pytesseract.image_to_string(img, lang="por", config=myconfig)
 
 # A text file is created and flushed
 file = open(f"{nomepasta}/relatorioEmTexto.txt", "w+")
 file.write("")
 file.close()
 
-n_boxes = len(d["text"])
+d = pytesseract.image_to_data(img, output_type=Output.DICT, lang="por")
+n_boxes = len(d["level"])
 for i in range(n_boxes):
-    if int(d["conf"][i]) > 20:
-        (x, y, w, h) = (d["left"][i], d["top"][i], d["width"][i], d["height"][i])
-        img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
-        file = open(f"{nomepasta}/relatorioEmTexto.txt", "a")
-        file.write(d["text"][i])
-        file.write("\n")
-        file.close
-
+    (x, y, w, h) = (d["left"][i], d["top"][i], d["width"][i], d["height"][i])
+    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
 cv2.imwrite(f"{nomepasta}/imagem_com_deteccao.jpg", img)
+
+for linha in texto.split("\n"):
+    file = open(f"{nomepasta}/relatorioEmTexto.txt", "a")
+    file.write(linha)
+    file.write("\n")
+    file.close
