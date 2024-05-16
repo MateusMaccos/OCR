@@ -32,7 +32,7 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tessera
 myconfig = r"--psm 3 --oem 3"
 nomepasta = "teste1"
 invertedImg = cv2.bitwise_not(img)
-# os.makedirs(f"./{nomepasta}")
+os.makedirs(f"./{nomepasta}")
 cv2.imwrite(f"{nomepasta}/imagem_invertida.jpg", invertedImg)
 
 

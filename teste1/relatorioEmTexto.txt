@@ -1,0 +1,52 @@
+Silva e Silva, Camila Relatório detalhado
+
+Data de nasc: 08/05/1991 Organização: Camila Ferreira Leite, Am... Intervalo de datas: — 04/05/2022 - 10/05/2022
+Referência: Morada: Rua Coronel Nunes de Melo, 1142, — Data de configuração: 11/05/2022
+; e , Rodoifo Teófilo Á
+1D do paciente: CamilaSilva e Sil... Fortaleza, CÉ 60416-000 Máscara:
+Telefone: App vinculado:
+Telefone:
+Dispositivos: BIPAP AVAPS 30 (System One 60 Series) 3.05.01 (1169P) C20346083C819
+
+Equipa de cuidados médicos
+
+Leite, Camila Camila Ferreira Leite Rua Coronel Nunes de Melo, 1142, Fortaleza - CE,
+60416-000, BRA
+
+Informações de aderência à terapêutica 04/05/2022 - 10/05/2022
+
+Definições do Dispositivo a partir de 10/05/2022
+
+Modo do aparelho S/T - AVAPS
+
+Configurações do dispositivo
+
+Parâmetro Valor
+IPAP máx. 26 cmH2O0
+IPAP min. 18 cmH2O0
+Pressão EPAP 7 cmH20
+Taxa respiratória 12
+Inspiração cronometrada 15
+Volume corrente 450
+Definição do tempo de elevação 2
+Bloqueio da definição do tempo de elevação S reterrrrerereeretereerteee— — Afivado
+Rampa M reeeeeeeeeeneenrenereereerereeneerereereeeerPereerPerereeePeePerPerPePPeeeePescePPeFPePPeresPereesPerPeePererereropepereeFeeesersereeeeeereerreerrereme—— D ESAtVadO.
+Resistência da máscara 1
+
+Tipo de tubo 22-
+
+Trava do tipo de tubo Desativado
+
+Alarme de desconexão Desativado
+
+Alarme de ventilação por minuto baixa 1
+Alarme de volume corrente baixo Desativado
+Mudar ajustes do umidificador Sim
+Modo de umidificação System One
+Configuração do umidificador 3
+PHILIPS Impresso por: — camila.leite 18/05/2022 Care Orchestrator Página 1 de 21
+
+*
+2
+G, Este relatório é apenas um dos vánros elementos a serem considerados durante a avaliação da eficácia da terapia e não visa substituir dados de diagnóstico.
+
