@@ -2,7 +2,7 @@ import cv2
 import pytesseract
 from pytesseract import Output
 import os
-import ajustarRotacao
+import shutil
 
 # from pdf2image import convert_from_path
 
@@ -35,6 +35,14 @@ def extrair_texto(caminho_imagem, pasta):
 
     myconfig = r"--psm 3 --oem 3"
     nomepasta = pasta
+    if os.path.exists(f"./{nomepasta}"):
+        try:
+            shutil.rmtree(nomepasta)
+            print(
+                f"A pasta {nomepasta} e todo o seu conteúdo foram deletados com sucesso."
+            )
+        except OSError as e:
+            print(f"Erro: {nomepasta} : {e.strerror}")
     os.makedirs(f"./{nomepasta}")
     # invertedImg = cv2.bitwise_not(img)
     # cv2.imwrite(f"{nomepasta}/imagem_invertida.jpg", invertedImg)
