@@ -2,7 +2,7 @@ import cv2
 import pytesseract
 from pytesseract import Output
 import os
-import ajustarRotacao
+import teste_inicial.ajustarRotacao as ajustarRotacao
 
 img = cv2.imread("teste1.jpg")
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"

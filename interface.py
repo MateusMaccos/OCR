@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
 from PIL import Image, ImageTk
-from spacytest import buscar_texto
-from OCR2 import extrair_texto
+from deteccao_texto_spacy import buscar_texto
+from ocr_relatorio import extrair_texto
 
 
 class Atributo:
@@ -31,7 +31,7 @@ class Atributo:
         lbl_valor.pack(padx=20, side=tk.RIGHT)
 
     def procurar_no_txt(self):
-        busca = buscar_texto(self.nome, "testeInterface")
+        busca = buscar_texto(self.nome, "relatorioTranscrito")
         self.campo_valor.delete(0, tk.END)  # Limpa o conteúdo atual
         self.campo_valor.insert(0, busca)  # Insere o novo valor
 
@@ -61,7 +61,7 @@ class Aplicacao:
         # Verifica se um arquivo foi selecionado
         if caminho_arquivo:
             try:
-                extrair_texto(caminho_arquivo, "testeInterface")
+                extrair_texto(caminho_arquivo, "relatorioTranscrito")
                 # Carrega a imagem usando PIL
                 imagem = Image.open(caminho_arquivo)
                 imagem = imagem.resize(
@@ -84,6 +84,7 @@ class Aplicacao:
         # Cria a janela principal
         janela = tk.Tk()
         janela.geometry("500x700")
+        janela.iconbitmap("icone.ico")
         janela.title("Detecção de atributos em relatório")
 
         # Cria um Canvas
@@ -125,16 +126,22 @@ class Aplicacao:
         self.label_caminho.pack(pady=10)
 
         separator = tk.Frame(self.frame_conteudo, height=2, bd=1, relief=tk.SUNKEN)
-        separator.pack(fill="x", padx=5, pady=5)
+        separator.pack(fill="x", padx=20, pady=5)
 
         frame_info = tk.Frame(self.frame_conteudo)
-        frame_info.pack(pady=10)
+        frame_info.pack(
+            pady=10,
+            padx=30,
+        )
 
         label_informacoes = tk.Label(frame_info, text="Informações para buscar")
         label_informacoes.pack(side=tk.LEFT)
 
         self.frame_atributos = tk.Frame(self.frame_conteudo)
-        self.frame_atributos.pack(pady=10, padx=20)
+        self.frame_atributos.pack(
+            pady=10,
+            padx=30,
+        )
 
         botao_procurar_info = tk.Button(
             frame_info,

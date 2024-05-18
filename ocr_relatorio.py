@@ -38,9 +38,6 @@ def extrair_texto(caminho_imagem, pasta):
     if os.path.exists(f"./{nomepasta}"):
         try:
             shutil.rmtree(nomepasta)
-            print(
-                f"A pasta {nomepasta} e todo o seu conteúdo foram deletados com sucesso."
-            )
         except OSError as e:
             print(f"Erro: {nomepasta} : {e.strerror}")
     os.makedirs(f"./{nomepasta}")

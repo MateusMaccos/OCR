@@ -12,9 +12,9 @@ def tratar_texto(texto):
 
 nlp = load("pt_core_news_lg")
 
-text = "Inspiração cronometrada 15"
+text = "Pressao EPAP 7 cmH20"
 
-string = "inspiracao cronometrada"
+string = "pressao EPAP"
 
 textoBuscado = tratar_texto(string)
 textoNoTxt = tratar_texto(text)
