@@ -1,4 +1,4 @@
-from spacy import load  # Carrega um modelo
+from spacy import load
 from unidecode import unidecode
 
 
@@ -16,7 +16,6 @@ def buscar_texto(texto_buscado, pasta):
     BuscaMinusculo = buscaSemAcentos.lower()
     textoBuscado = nlp(BuscaMinusculo)
 
-    # palavra_chave = str(textoBuscado[0])
     palavras_chave = str(textoBuscado).split()
 
     valor_numerico = None
@@ -36,7 +35,6 @@ def buscar_texto(texto_buscado, pasta):
                         j = 1
                         if palavras_em_comum >= 2 or len(palavras_chave) == 1:
                             while doc[token.i + j].text != "\n":
-                                # Verificar se a próxima palavra após palavra_chave é um número
                                 if token.i + j < len(doc) and doc[token.i + j].like_num:
                                     valor_numerico = float(doc[token.i + j].text)
                                 j = j + 1

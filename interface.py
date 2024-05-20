@@ -4,6 +4,9 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 from deteccao_texto_spacy import buscar_texto
 from ocr_relatorio import extrair_texto
+from pdf2image import convert_from_path
+import os
+import shutil
 
 
 class Atributo:
@@ -51,6 +54,63 @@ class Aplicacao:
             if atributo.nome not in ["", None]:
                 atributo.procurar_no_txt()
 
+    def selecionar_pdf(self):
+        # Abre uma janela de diálogo para selecionar um arquivo PDF
+        caminho_pdf = filedialog.askopenfilename(
+            title="Selecione um arquivo PDF",
+            filetypes=[("Arquivos PDF", "*.pdf")],
+        )
+
+        # Verifica se um arquivo foi selecionado
+        if caminho_pdf:
+            try:
+                # Converte o PDF em imagens
+                paginas = convert_from_path(
+                    caminho_pdf,
+                    poppler_path=r"C:\Users\mateu\Downloads\poppler-24.02.0\Library\bin",
+                )
+                num_paginas = len(paginas)
+
+                # Cria a pasta para armazenar os resultados da extração de texto
+                pasta_resultados = "relatorioTranscrito"
+
+                if os.path.exists(pasta_resultados):
+                    try:
+                        shutil.rmtree(pasta_resultados)
+                    except OSError as e:
+                        print(f"Erro: {pasta_resultados} : {e.strerror}")
+                os.makedirs(pasta_resultados)
+                file = open(f"{pasta_resultados}/relatorioEmTexto.txt", "w+")
+                file.write("")
+                file.close()
+
+                # Processa todas as páginas
+                for numero_pagina, pagina in enumerate(paginas, start=1):
+                    caminho_imagem = os.path.join(
+                        pasta_resultados, f"pagina_{numero_pagina}.jpg"
+                    )
+                    pagina.save(caminho_imagem, "JPEG")
+
+                    extrair_texto(caminho_imagem, pasta_resultados)
+
+                # Exibe a primeira página do PDF como imagem na interface
+                imagem = paginas[0]
+                imagem = imagem.resize(
+                    (250, 250), Image.Resampling.LANCZOS
+                )  # Redimensiona a imagem
+
+                imagem_tk = ImageTk.PhotoImage(imagem)
+                self.label_imagem.config(image=imagem_tk)
+                self.label_imagem.image = imagem_tk  # Mantém uma referência da imagem
+
+                # Atualiza o rótulo do caminho do arquivo
+                self.label_caminho.config(
+                    text=f"PDF: {caminho_pdf} - {num_paginas} páginas processadas"
+                )
+
+            except Exception as e:
+                messagebox.showerror("Erro", f"Não foi possível abrir o PDF: {e}")
+
     def selecionar_imagem(self):
         # Abre uma janela de diálogo para selecionar um arquivo
         caminho_arquivo = filedialog.askopenfilename(
@@ -61,6 +121,17 @@ class Aplicacao:
         # Verifica se um arquivo foi selecionado
         if caminho_arquivo:
             try:
+                # Cria a pasta para armazenar os resultados da extração de texto
+                pasta_resultados = "relatorioTranscrito"
+                if os.path.exists(pasta_resultados):
+                    try:
+                        shutil.rmtree(pasta_resultados)
+                    except OSError as e:
+                        print(f"Erro: {pasta_resultados} : {e.strerror}")
+                os.makedirs(pasta_resultados)
+                file = open(f"{pasta_resultados}/relatorioEmTexto.txt", "w+")
+                file.write("")
+                file.close()
                 extrair_texto(caminho_arquivo, "relatorioTranscrito")
                 # Carrega a imagem usando PIL
                 imagem = Image.open(caminho_arquivo)
@@ -114,6 +185,13 @@ class Aplicacao:
             command=self.selecionar_imagem,
         )
         botao_selecionar.pack(pady=10)
+
+        botao_selecionar_pdf = tk.Button(
+            self.frame_conteudo,
+            text="Selecionar PDF",
+            command=self.selecionar_pdf,
+        )
+        botao_selecionar_pdf.pack(pady=10)
 
         # Cria e posiciona um label para exibir a imagem
         self.label_imagem = tk.Label(self.frame_conteudo)
