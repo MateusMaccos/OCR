@@ -27,6 +27,14 @@ class Atributo:
         self.campo_atributo = tk.Entry(frame_ind)
         self.campo_atributo.pack(side=tk.LEFT)
 
+        opcoes = ["Número", "Texto"]
+
+        self.tipo_selecionado = tk.StringVar(frame_ind)
+        self.tipo_selecionado.set(opcoes[0])
+
+        self.dropdown = tk.OptionMenu(frame_ind, self.tipo_selecionado, *opcoes)
+        self.dropdown.pack(padx=(20, 0), side=tk.RIGHT)
+
         self.campo_valor = tk.Entry(frame_ind)
         self.campo_valor.pack(side=tk.RIGHT)
 
@@ -34,7 +42,11 @@ class Atributo:
         lbl_valor.pack(padx=20, side=tk.RIGHT)
 
     def procurar_no_txt(self):
-        busca = buscar_texto(self.nome, "relatorioTranscrito")
+        busca = buscar_texto(
+            self.nome,
+            "relatorioTranscrito",
+            tipo="num" if self.tipo_selecionado.get() == "Número" else "str",
+        )
         self.campo_valor.delete(0, tk.END)  # Limpa o conteúdo atual
         self.campo_valor.insert(0, busca)  # Insere o novo valor
 
@@ -154,7 +166,7 @@ class Aplicacao:
     def run(self):
         # Cria a janela principal
         janela = tk.Tk()
-        janela.geometry("500x700")
+        janela.geometry("700x700")
         janela.iconbitmap("icone.ico")
         janela.title("Detecção de atributos em relatório")
 

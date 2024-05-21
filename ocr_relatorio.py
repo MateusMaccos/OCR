@@ -35,8 +35,6 @@ def extrair_texto(caminho_imagem, pasta):
 
     myconfig = r"--psm 3 --oem 3"
     nomepasta = pasta
-    # invertedImg = cv2.bitwise_not(img)
-    # cv2.imwrite(f"{nomepasta}/imagem_invertida.jpg", invertedImg)
 
     def grayscale(image):
         return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
